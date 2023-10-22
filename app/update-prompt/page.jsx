@@ -24,14 +24,18 @@ const UpdatePrompt = () => {
       });
     };
 
-    if (promptId) getPromptDetails();
+    if (promptId && typeof window === 'undefined') {
+      getPromptDetails();
+    };
   }, [promptId]);
 
   const updatePrompt = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (!promptId) return alert("Missing PromptId!");
+    if (!promptId) {
+      return alert("Missing PromptId!")
+    };
 
     try {
       const response = await fetch(`/api/prompt/${promptId}`, {
