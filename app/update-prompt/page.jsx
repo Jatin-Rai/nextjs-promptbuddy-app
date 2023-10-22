@@ -24,7 +24,7 @@ const UpdatePrompt = () => {
       });
     };
 
-    if (promptId && typeof window === 'undefined') {
+    if (promptId) {
       getPromptDetails();
     };
   }, [promptId]);
