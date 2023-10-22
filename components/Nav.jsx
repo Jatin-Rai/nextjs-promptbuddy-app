@@ -27,6 +27,7 @@ const Nav = () => {
         href="/"
         className="flex gap-2 flex-center"
         passHref
+        prefetch
       >
         <Image
           src="/assets/images/logo.svg"
@@ -44,11 +45,11 @@ const Nav = () => {
         {session?.user
           ? (
             <div className="flex gap-3 md:gap-5">
-              <Link href="/create-prompt" className="black_btn" passHref>Create</Link>
+              <Link href="/create-prompt" className="black_btn" passHref prefetch>Create</Link>
               <button type="button" onClick={signOut} className="outline_btn">
                 Sign Out
               </button>
-              <Link href="/profile" passHref>
+              <Link href="/profile" passHref prefetch>
                 <Image
                   src={session?.user.image}
                   width={37}
@@ -97,6 +98,7 @@ const Nav = () => {
                       className="dropdown_link"
                     onClick={() => setToggleDropdown(false)}
                     passHref
+                    prefetch
                     >
                       Profile
                     </Link>
@@ -105,6 +107,7 @@ const Nav = () => {
                       className="dropdown_link"
                     onClick={() => setToggleDropdown(false)}
                     passHref
+                    prefetch
                     >
                       Create Prompt
                     </Link>
