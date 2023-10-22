@@ -26,6 +26,7 @@ const Nav = () => {
       <Link
         href="/"
         className="flex gap-2 flex-center"
+        passHref
       >
         <Image
           src="/assets/images/logo.svg"
@@ -43,7 +44,7 @@ const Nav = () => {
         {session?.user
           ? (
             <div className="flex gap-3 md:gap-5">
-              <Link href="/create-prompt" className="black_btn">Create</Link>
+              <Link href="/create-prompt" className="black_btn" passHref>Create</Link>
               <button type="button" onClick={signOut} className="outline_btn">
                 Sign Out
               </button>
