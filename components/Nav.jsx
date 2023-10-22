@@ -48,7 +48,7 @@ const Nav = () => {
               <button type="button" onClick={signOut} className="outline_btn">
                 Sign Out
               </button>
-              <Link href="/profile">
+              <Link href="/profile" passHref>
                 <Image
                   src={session?.user.image}
                   width={37}
@@ -95,14 +95,16 @@ const Nav = () => {
                     <Link
                       href="/profile"
                       className="dropdown_link"
-                      onClick={() => setToggleDropdown(false)}
+                    onClick={() => setToggleDropdown(false)}
+                    passHref
                     >
                       Profile
                     </Link>
                     <Link
                       href="/create-prompt"
                       className="dropdown_link"
-                      onClick={() => setToggleDropdown(false)}
+                    onClick={() => setToggleDropdown(false)}
+                    passHref
                     >
                       Create Prompt
                     </Link>
