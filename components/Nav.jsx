@@ -3,9 +3,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { signIn, signOut, useSession, getProviders } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 const Nav = () => {
+  const router = useRouter();
 
   const { data: session } = useSession();
 
@@ -26,7 +28,7 @@ const Nav = () => {
       <Link
         href="/"
         className="flex gap-2 flex-center"
-        
+
       >
         <Image
           src="/assets/images/logo.svg"
@@ -45,7 +47,7 @@ const Nav = () => {
           ? (
             <div className="flex gap-3 md:gap-5">
               <Link href="/create-prompt" className="black_btn" >Create</Link>
-              <button type="button" onClick={signOut} className="outline_btn">
+              <button type="button" onClick={() => signOut()} className="outline_btn">
                 Sign Out
               </button>
               <Link href="/profile" >
@@ -95,16 +97,16 @@ const Nav = () => {
                     <Link
                       href="/profile"
                       className="dropdown_link"
-                    onClick={() => setToggleDropdown(false)}
-                    
+                      onClick={() => setToggleDropdown(false)}
+
                     >
                       Profile
                     </Link>
                     <Link
                       href="/create-prompt"
                       className="dropdown_link"
-                    onClick={() => setToggleDropdown(false)}
-                    pass
+                      onClick={() => setToggleDropdown(false)}
+                      pass
                     >
                       Create Prompt
                     </Link>
