@@ -27,21 +27,14 @@ const Feed = () => {
   const [searchTimeout, setSearchTimeout] = useState(null);
   const [searchedResults, setSearchedResults] = useState([]);
 
+  const fetchPosts = async () => {
+    const response = await fetch("/api/prompt");
+    const data = await response.json();
+
+    setAllPosts(data);
+  };
 
   useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch("/api/prompt");
-        if (!response.ok) {
-          throw new Error(`Failed to fetch data: ${response.status}`);
-        }
-        const data = await response.json();
-        setAllPosts(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchPosts();
   }, []);
 
@@ -79,7 +72,7 @@ const Feed = () => {
       <form className="relative w-full flex-center">
         <input
           type="text"
-          placeholder="Search for a tag, username or keywords"
+          placeholder="Search for tag, username or keywords"
           value={searchText}
           onChange={handleSearchChange}
           required
