@@ -7,4 +7,4 @@
 2. Create, Read, Update and Delete Posts
 3. View and Search Posts
 
-==feel free to clone and use it in your project==
+==*feel free to clone and use it in your project*==
