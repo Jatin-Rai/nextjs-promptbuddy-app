@@ -25,7 +25,9 @@ const UpdatePrompt = () => {
     };
 
     if (promptId) {
-      getPromptDetails();
+      return () => {
+        getPromptDetails()
+      };
     };
   }, [promptId]);
 

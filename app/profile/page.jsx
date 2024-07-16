@@ -20,7 +20,11 @@ const MyProfile = () => {
       setMyPosts(data);
     };
 
-    if (session?.user.id) fetchPosts();
+    if (session?.user.id) {
+      return () => {
+        fetchPosts()
+      }
+    };
   }, [session?.user.id]);
 
   const handleEdit = (post) => {

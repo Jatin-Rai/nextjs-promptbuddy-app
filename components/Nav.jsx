@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 
 
 const Nav = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   const { data: session } = useSession();
 
@@ -20,7 +20,9 @@ const Nav = () => {
       setProviders(response)
     }
 
-    setUpProviders();
+    return () => {
+      setUpProviders();
+    }
   }, [session])
 
   return (
@@ -87,8 +89,8 @@ const Nav = () => {
                 src={session?.user.image}
                 width={37}
                 height={37}
-                className="rounded-full cursor-pointer"
                 alt="profile"
+                className="rounded-full cursor-pointer"
                 onClick={() => setToggleDropdown(prev => !prev)}
               />
               {toggleDropdown

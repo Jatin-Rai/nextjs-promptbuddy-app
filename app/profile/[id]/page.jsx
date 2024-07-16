@@ -19,7 +19,11 @@ const UserProfile = ({ params }) => {
             setUserPosts(data);
         };
 
-        if (params?.id) fetchPosts();
+        if (params?.id) {
+            return () => {
+                fetchPosts();
+            };
+        }
     }, [params.id]);
 
     return (
