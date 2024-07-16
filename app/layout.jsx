@@ -1,5 +1,6 @@
 import { Footer, Nav, Provider } from '@/components'
 import './globals.css'
+import { Suspense } from 'react'
 
 export const metadata = {
   title: 'PromptBuddy',
@@ -10,16 +11,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <Provider>
-          <div className='main' >
-            <div className='gradient' />
-          </div>
-          <main className='app'>
-            <Nav />
-            {children}
-            <Footer />
-          </main>
-        </Provider>
+        <Suspense fallback={<p>Loading...</p>}>
+          <Provider>
+            <div className='main' >
+              <div className='gradient' />
+            </div>
+            <main className='app'>
+              <Nav />
+              {children}
+              <Footer />
+            </main>
+          </Provider>
+        </Suspense>
       </body>
     </html>
   )
